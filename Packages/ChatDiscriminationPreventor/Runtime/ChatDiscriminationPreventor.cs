@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace ChatDescrimintionPreventorProj
 {
+    public enum DiscriminationType { OBSCENE, IDENTITY, THREAT, LIGHT }
+
     public class ChatDiscriminationPreventor
     {
 
@@ -20,15 +22,22 @@ namespace ChatDescrimintionPreventorProj
             this.httpClient = new HttpClient();
         }
 
-
-        public async Task<HttpResponseMessage> CheckHatespeech(string message)
+        public async Task<DiscriminationResult> CheckHatespeech(string message)
         {
-            //await PostJsonContent(API_URL, httpClient);
             var postUser = new User { message = message, analyze = true };
             HttpResponseMessage result = await httpClient.PostAsJsonAsync(API_URL, postUser);
-            //var result = await httpClient.GetAsync(API_URL);
 
-            return result;//new DiscriminationResult("This text contains hate speech. You are a fucking idiot", true);
+            return new DiscriminationResult(
+                (string)json["message"],
+                (float)json["evaluation_results"]["toxicity"] > detectionThreshold,
+                (float)json["evaluation_results"]["severe_toxicity"] > detectionThreshold,
+                (float)json["evaluation_results"]["obscene"] > detectionThreshold,
+                (float)json["evaluation_results"]["identity_attack"] > detectionThreshold,
+                (float)json["evaluation_results"]["insult"] > detectionThreshold,
+                (float)json["evaluation_results"]["threat"] > detectionThreshold,
+                (float)json["evaluation_results"]["sexual_explicit"] > detectionThreshold,
+                (string)json["adviceMessage"]
+            );
         }
 
         public List<string> DetectProfanitiesSync(string sentence)
@@ -55,11 +64,34 @@ namespace ChatDescrimintionPreventorProj
     public struct DiscriminationResult
     {
         public string message;
-        public bool containsHatespeech;
-        public DiscriminationResult(string message, bool containsHatespeech)
+        public bool isToxic;
+        public bool isServerelyToxic;
+        public bool isObscene;
+        public bool isIdentityAttack;
+        public bool isInsult;
+        public bool isThreat;
+        public bool isSexualExplicit;
+        public string adviceMessage;
+
+        public DiscriminationResult(string message,
+            bool isToxic,
+            bool isServerelyToxic,
+            bool isObscene,
+            bool isIdentityAttack,
+            bool isInsult,
+            bool isThreat,
+            bool isSexualExplicit,
+            string adviceMessage)
         {
             this.message = message;
-            this.containsHatespeech = containsHatespeech;
+            this.isToxic = isToxic;
+            this.isServerelyToxic = isServerelyToxic;
+            this.isObscene = isObscene;
+            this.isIdentityAttack = isIdentityAttack;
+            this.isInsult = isInsult;
+            this.isThreat = isThreat;
+            this.isSexualExplicit = isSexualExplicit;
+            this.adviceMessage = adviceMessage;
         }
     }
 
