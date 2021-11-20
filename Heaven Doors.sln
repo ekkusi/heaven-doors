@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Timeline", "Unity.Tim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.TextMeshPro", "Unity.TextMeshPro.csproj", "{1a23088a-8130-c715-6c6d-2c8fbbb552ea}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "heaven-doors.chat-discrimination-prevento", "heaven-doors.chat-discrimination-prevento.csproj", "{2c8d91b3-cdc5-f328-a2e8-3baf45f4889f}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEditor.TestRunner", "UnityEditor.TestRunner.csproj", "{2cb6057c-5f1e-a0b8-1ccb-19f650800d12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.PlasticSCM.Editor", "Unity.PlasticSCM.Editor.csproj", "{186f1ee7-880e-3fd7-b11a-6c1d40e7f4a1}"
@@ -48,6 +50,8 @@ Global
 		{21d2496a-cd55-1ba7-9b61-989646d51de8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1a23088a-8130-c715-6c6d-2c8fbbb552ea}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1a23088a-8130-c715-6c6d-2c8fbbb552ea}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2c8d91b3-cdc5-f328-a2e8-3baf45f4889f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2c8d91b3-cdc5-f328-a2e8-3baf45f4889f}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2cb6057c-5f1e-a0b8-1ccb-19f650800d12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2cb6057c-5f1e-a0b8-1ccb-19f650800d12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{186f1ee7-880e-3fd7-b11a-6c1d40e7f4a1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
