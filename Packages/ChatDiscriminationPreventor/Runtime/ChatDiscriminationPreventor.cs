@@ -27,6 +27,8 @@ namespace ChatDescrimintionPreventorProj
             var postUser = new User { message = message, analyze = true };
             HttpResponseMessage result = await httpClient.PostAsJsonAsync(API_URL, postUser);
 
+            var responseContent = await result.Content.ReadAsStringAsync();
+            var json = JObject.Parse(responseContent);
             return new DiscriminationResult(
                 (string)json["message"],
                 (float)json["evaluation_results"]["toxicity"] > detectionThreshold,
