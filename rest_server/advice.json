@@ -1,0 +1,27 @@
+{
+    "identity": {
+        "general":[
+        "Attacking others identities is hurful",
+        "Hate speech is not allowed here",
+        "Do it again and you are banned"
+        ]
+    },
+    "obscene":{
+        "general": [
+        "Please stop being so toxic",
+        "What would your mother say?",
+        "Why would you get so angry at a video game?",
+        "It's just a game Jimmy"
+        ]
+    },
+    "threat":{
+        "general": [
+        "You wouldn't do that, so why say it?"
+        ]
+    },
+    "light":{
+        "general": [
+        "Little to no obscenity"
+        ]
+    }
+}
