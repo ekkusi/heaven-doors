@@ -48,6 +48,7 @@
      <Compile Include="Assets/Draw If Atrribute/DrawIfAttribute.cs" />
      <Compile Include="Assets/Draw If Atrribute/ComparisonType.cs" />
      <Compile Include="Assets/Draw If Atrribute/TypeUtilities.cs" />
+     <Compile Include="Assets/Scripts/ChatMessageManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -649,6 +650,14 @@
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{1a23088a-8130-c715-6c6d-2c8fbbb552ea}</Project>
       <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
+      <Project>{357157ec-48c1-0e2f-2ae2-89b640cda6ff}</Project>
+      <Name>Unity.2D.Sprite.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="heaven-doors.chat-discrimination-prevento.csproj">
+      <Project>{2c8d91b3-cdc5-f328-a2e8-3baf45f4889f}</Project>
+      <Name>heaven-doors.chat-discrimination-prevento</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{a924a0dc-cdd7-6181-0feb-3cbd8726f806}</Project>
