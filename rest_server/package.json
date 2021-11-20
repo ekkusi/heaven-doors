@@ -1,0 +1,18 @@
+{
+  "name": "rest_server",
+  "version": "1.0.0",
+  "description": "Rest server for heavens door ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo \"STARTING HEAVENS DOOR SERVER....\" && nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "csv-parser": "^3.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
+}
