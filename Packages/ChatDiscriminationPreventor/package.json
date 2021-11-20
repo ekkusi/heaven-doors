@@ -1,0 +1,14 @@
+{
+  "name": "com.heaven-doors.chat-discrimination-preventor",
+  "version": "1.0.0",
+  "displayName": "Chat Discrimination Preventor",
+  "description": "This package provides tools to detect hate speech and harrasment in messages and provide alternative actions to take instead.",
+  "unity": "2020.3",
+  "unityRelease": "22f1",
+  "keywords": [
+    "discrimination",
+    "chat",
+    "hate speech"
+  ],
+  "type": "tool"
+}
