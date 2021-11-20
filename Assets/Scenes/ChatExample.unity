@@ -299,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputField: {fileID: 1835078479}
   chatContainer: {fileID: 1662537300}
-  messagePrefab: {fileID: 1747545596}
+  messagePrefab: {fileID: 1406237087111787279, guid: 7179faa5520c44a60a52dfb1e0222713, type: 3}
   sendButton: {fileID: 1987064218}
 --- !u!4 &296423135
 Transform:
@@ -1381,11 +1381,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!1 &1747545596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1406237087111787279, guid: 7179faa5520c44a60a52dfb1e0222713, type: 3}
-  m_PrefabInstance: {fileID: 1492867255}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1835078477
 GameObject:
   m_ObjectHideFlags: 0

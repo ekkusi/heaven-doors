@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
 using ChatDescrimintionPreventorProj;
 using UnityEngine;
 using UnityEngine.UI;
@@ -75,6 +77,7 @@ namespace HeavenDoors
             }
         }
 
+
         private void UpdateCanvas()
         {
             Canvas.ForceUpdateCanvases();
@@ -104,12 +107,22 @@ namespace HeavenDoors
             ChatMessageManager messageManager = messageObj.GetComponent<ChatMessageManager>();
             messageManager.InitializeMessage(playerName, message);
             messageCount++;
-            if (messageCount % 3 == 0)
-            {
-                StartCoroutine(AlertAfterTime(messageManager, 1.0f));
-            }
+            StartCoroutine(CheckAndAlertDiscriminationAsync(messageManager, message).AsIEnumerator());
             UpdateCanvas();
         }
+
+        private async Task CheckAndAlertDiscriminationAsync(ChatMessageManager messageManager, string message)
+        {
+            Debug.Log("Started to check hate speech for message: " + message);
+            object response = await discriminationPreventor.CheckHatespeech(message);
+            Debug.Log("Hate speech detectino over");
+            float range = Random.Range(0f, 1f);
+            if (range > 0.7)
+            {
+                messageManager.ActivateAlert("Some instructions for better communication through this cool message system:)");
+            }
+        }
+
         private IEnumerator AlertAfterTime(ChatMessageManager messageManager, float time)
         {
             yield return new WaitForSeconds(time);

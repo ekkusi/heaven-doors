@@ -49,6 +49,7 @@
      <Compile Include="Assets/Draw If Atrribute/ComparisonType.cs" />
      <Compile Include="Assets/Draw If Atrribute/TypeUtilities.cs" />
      <Compile Include="Assets/Scripts/ChatMessageManager.cs" />
+     <Compile Include="Assets/Scripts/TaskExtensions.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -271,8 +272,35 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="ProfanityFilter">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/ProfanityFilter.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
         <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Json">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Net.Http.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.22f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -655,10 +683,6 @@
       <Project>{357157ec-48c1-0e2f-2ae2-89b640cda6ff}</Project>
       <Name>Unity.2D.Sprite.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="heaven-doors.chat-discrimination-prevento.csproj">
-      <Project>{2c8d91b3-cdc5-f328-a2e8-3baf45f4889f}</Project>
-      <Name>heaven-doors.chat-discrimination-prevento</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{a924a0dc-cdd7-6181-0feb-3cbd8726f806}</Project>
       <Name>UnityEditor.UI</Name>
@@ -674,6 +698,10 @@
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{08087832-1a54-4acb-e2e9-6279bdd1db59}</Project>
       <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="heaven-doors.chat-discrimination-prevento.csproj">
+      <Project>{2c8d91b3-cdc5-f328-a2e8-3baf45f4889f}</Project>
+      <Name>heaven-doors.chat-discrimination-prevento</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

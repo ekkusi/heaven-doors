@@ -10,5 +10,6 @@
     "chat",
     "hate speech"
   ],
-  "type": "tool"
+  "type": "tool",
+  "dependencies": {}
 }
