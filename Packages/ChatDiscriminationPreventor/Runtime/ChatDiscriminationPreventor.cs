@@ -13,9 +13,9 @@ namespace ChatDescrimintionPreventorProj
         private HttpClient httpClient;
         private ProfanityFilter.ProfanityFilter profanityFilter;
 
-        public ChatDiscriminationPreventor()
+        public ChatDiscriminationPreventor(float detectionThreshold = 0.8f)
         {
-            this.detectionThreshold = 0.8f;
+            this.detectionThreshold = detectionThreshold;
             profanityFilter = new ProfanityFilter.ProfanityFilter();
             this.httpClient = new HttpClient();
         }
