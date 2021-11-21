@@ -10,5 +10,8 @@
     "chat",
     "hate speech"
   ],
-  "type": "tool"
+  "type": "tool",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "2.0.0"
+  }
 }

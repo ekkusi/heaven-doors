@@ -76,6 +76,9 @@ namespace ChatDescrimintionPreventorProj
         public bool isSexualExplicit;
         public string adviceMessage;
         public List<string> types;
+        public float positivityRate;
+        public bool isPositive;
+        public string positiveMessage;
 
         public DiscriminationResult(string message,
             bool isToxic,
@@ -110,7 +113,7 @@ namespace ChatDescrimintionPreventorProj
             this.isSexualExplicit = isSexualExplicit;
             if (isSexualExplicit) types.Add("Sexual explicit");
 
-            if (positivityRate > 90 && types.Count == 0) isPositive = true;
+            if (positivityRate > 0.5 && types.Count == 0) isPositive = true;
             else isPositive = false;
         }
     }
