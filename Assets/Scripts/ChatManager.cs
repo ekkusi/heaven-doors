@@ -39,7 +39,7 @@ namespace HeavenDoors
         [SerializeField]
         private Button sendButton;
         private string previousPlayerName;
-        private int messageCount = 0;
+        private int messageCount;
         ChatDiscriminationPreventor discriminationPreventor;
 
         private void Start()
@@ -98,39 +98,38 @@ namespace HeavenDoors
         {
             GameObject messageObj = Instantiate(messagePrefab, Vector3.zero, Quaternion.identity);
             messageObj.transform.SetParent(chatContainer.transform, false);
-            string playerName = PLAYER_NAMES[Random.Range(0, PLAYER_NAMES.Count)];
-            while (previousPlayerName == playerName)
+
+            bool isYou = messageCount % 2 == 0;
+            string playerName = "You";
+            if (!isYou)
             {
                 playerName = PLAYER_NAMES[Random.Range(0, PLAYER_NAMES.Count)];
+                while (previousPlayerName == playerName)
+                {
+                    playerName = PLAYER_NAMES[Random.Range(0, PLAYER_NAMES.Count)];
+                }
+                previousPlayerName = playerName;
+
             }
-            previousPlayerName = playerName;
             ChatMessageManager messageManager = messageObj.GetComponent<ChatMessageManager>();
-            messageManager.InitializeMessage(playerName, message);
+            messageManager.InitializeMessage(playerName, message, isYou);
             messageCount++;
-            StartCoroutine(CheckAndAlertDiscriminationAsync(messageManager, message).AsIEnumerator());
+            if (isYou)
+            {
+                StartCoroutine(CheckAndAlertDiscriminationAsync(messageManager, message).AsIEnumerator());
+            }
             UpdateCanvas();
         }
 
         private async Task CheckAndAlertDiscriminationAsync(ChatMessageManager messageManager, string message)
         {
-            Debug.Log("Started to check hate speech for message: " + message);
-            object response = await discriminationPreventor.CheckHatespeech(message);
-            Debug.Log("Hate speech detectino over");
-            float range = Random.Range(0f, 1f);
-            if (range > 0.7)
+            DiscriminationResult result = await discriminationPreventor.CheckHatespeech(message);
+            if (result.isToxic)
             {
-                messageManager.ActivateAlert("Some instructions for better communication through this cool message system:)");
+                messageManager.ActivateAlert(result.adviceMessage, new List<string>() { "Toxic" });
             }
         }
 
-        private IEnumerator AlertAfterTime(ChatMessageManager messageManager, float time)
-        {
-            yield return new WaitForSeconds(time);
-
-            messageManager.ActivateAlert("Some instructions for better communication through this cool message system:)");
-        }
     }
-
-
 }
 
