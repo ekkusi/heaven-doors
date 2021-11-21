@@ -6,11 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace ChatDescrimintionPreventorProj
 {
-    public enum DiscriminationType { OBSCENE, IDENTITY, THREAT, LIGHT }
-
     public class ChatDiscriminationPreventor
     {
-
         private const string API_URL = "http://95.179.229.215:3000/evaluate";
         private float detectionThreshold;
         private HttpClient httpClient;
@@ -76,6 +73,7 @@ namespace ChatDescrimintionPreventorProj
         public bool isThreat;
         public bool isSexualExplicit;
         public string adviceMessage;
+        public List<string> types;
 
         public DiscriminationResult(string message,
             bool isToxic,
@@ -87,14 +85,22 @@ namespace ChatDescrimintionPreventorProj
             bool isSexualExplicit,
             string adviceMessage)
         {
+            types = new List<string>();
             this.message = message;
             this.isToxic = isToxic;
+            if (isToxic) types.Add("Toxic");
             this.isServerelyToxic = isServerelyToxic;
+            if (isServerelyToxic) types.Add("Severely toxic");
             this.isObscene = isObscene;
+            if (isObscene) types.Add("Obscene");
             this.isIdentityAttack = isIdentityAttack;
+            if (isIdentityAttack) types.Add("Identity attack");
             this.isInsult = isInsult;
+            if (isInsult) types.Add("Insult");
             this.isThreat = isThreat;
+            if (isThreat) types.Add("Threat");
             this.isSexualExplicit = isSexualExplicit;
+            if (isSexualExplicit) types.Add("Sexual explicit");
             this.adviceMessage = adviceMessage;
         }
     }
