@@ -12,6 +12,8 @@ namespace HeavenDoors
         [SerializeField]
         private Text alertText;
         [SerializeField]
+        private Image alertImage;
+        [SerializeField]
         private HorizontalLayoutGroup alertTagsContainer;
         [SerializeField]
         private GameObject alertImageObj;
@@ -23,6 +25,8 @@ namespace HeavenDoors
         private Text messageText;
         [SerializeField]
         private GameObject tagPrefab;
+        [SerializeField]
+        private Color positiveColor;
         [SerializeField]
         private Color youColor;
 
@@ -64,6 +68,14 @@ namespace HeavenDoors
                 TagManager tagManager = tagObj.GetComponent<TagManager>();
                 tagManager.SetTagText(tag);
             }
+            UpdateCanvas();
+        }
+        public void ActivatePositiveAlert(string message)
+        {
+            alertContainer.gameObject.SetActive(true);
+            alertImageObj.SetActive(false);
+            alertText.text = message;
+            alertImage.color = positiveColor;
             UpdateCanvas();
         }
 

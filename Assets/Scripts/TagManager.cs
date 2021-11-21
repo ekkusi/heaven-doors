@@ -9,9 +9,18 @@ namespace HeavenDoors
     {
         [SerializeField]
         private Text tagText;
+        [SerializeField]
+        private HorizontalLayoutGroup layoutGroup;
         public void SetTagText(string tagMessage)
         {
             tagText.text = tagMessage;
+            UpdateCanvas();
+        }
+        private void UpdateCanvas()
+        {
+            Canvas.ForceUpdateCanvases();
+            layoutGroup.enabled = false;
+            layoutGroup.enabled = true;
         }
     }
 }

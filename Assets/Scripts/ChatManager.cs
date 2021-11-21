@@ -126,8 +126,9 @@ namespace HeavenDoors
             DiscriminationResult result = await discriminationPreventor.CheckHatespeech(message);
             if (result.isToxic)
             {
-                messageManager.ActivateAlert(result.adviceMessage, new List<string>() { "Toxic" });
+                messageManager.ActivateAlert(result.adviceMessage, result.types);
             }
+            UpdateCanvas();
         }
 
     }
