@@ -4,4 +4,4 @@
 
 Download Demo app to test on your machine under Builds:
 
-[/Builds](MacOS Build)
+[MacOS Build](/Builds/MacBuild.zip)
