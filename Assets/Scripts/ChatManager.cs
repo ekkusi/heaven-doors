@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
 using ChatDescrimintionPreventorProj;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,7 +39,7 @@ namespace HeavenDoors
         [SerializeField]
         private Button sendButton;
         private string previousPlayerName;
-        private int messageCount = 0;
+        private int messageCount;
         ChatDiscriminationPreventor discriminationPreventor;
 
         private void Start()
@@ -75,6 +77,7 @@ namespace HeavenDoors
             }
         }
 
+
         private void UpdateCanvas()
         {
             Canvas.ForceUpdateCanvases();
@@ -95,29 +98,39 @@ namespace HeavenDoors
         {
             GameObject messageObj = Instantiate(messagePrefab, Vector3.zero, Quaternion.identity);
             messageObj.transform.SetParent(chatContainer.transform, false);
-            string playerName = PLAYER_NAMES[Random.Range(0, PLAYER_NAMES.Count)];
-            while (previousPlayerName == playerName)
+
+            bool isYou = messageCount % 2 == 0;
+            string playerName = "You";
+            if (!isYou)
             {
                 playerName = PLAYER_NAMES[Random.Range(0, PLAYER_NAMES.Count)];
+                while (previousPlayerName == playerName)
+                {
+                    playerName = PLAYER_NAMES[Random.Range(0, PLAYER_NAMES.Count)];
+                }
+                previousPlayerName = playerName;
+
             }
-            previousPlayerName = playerName;
             ChatMessageManager messageManager = messageObj.GetComponent<ChatMessageManager>();
-            messageManager.InitializeMessage(playerName, message);
+            messageManager.InitializeMessage(playerName, message, isYou);
             messageCount++;
-            if (messageCount % 3 == 0)
+            if (isYou)
             {
-                StartCoroutine(AlertAfterTime(messageManager, 1.0f));
+                StartCoroutine(CheckAndAlertDiscriminationAsync(messageManager, message).AsIEnumerator());
             }
             UpdateCanvas();
         }
-        private IEnumerator AlertAfterTime(ChatMessageManager messageManager, float time)
+
+        private async Task CheckAndAlertDiscriminationAsync(ChatMessageManager messageManager, string message)
         {
-            yield return new WaitForSeconds(time);
-
-            messageManager.ActivateAlert("Some instructions for better communication through this cool message system:)");
+            DiscriminationResult result = await discriminationPreventor.CheckHatespeech(message);
+            if (result.isToxic)
+            {
+                messageManager.ActivateAlert(result.adviceMessage, result.types);
+            }
+            UpdateCanvas();
         }
+
     }
-
-
 }
 

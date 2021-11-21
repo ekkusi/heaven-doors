@@ -8,7 +8,13 @@ namespace HeavenDoors
     public class ChatMessageManager : MonoBehaviour
     {
         [SerializeField]
-        private GameObject alertMessage;
+        private VerticalLayoutGroup alertContainer;
+        [SerializeField]
+        private Text alertText;
+        [SerializeField]
+        private Image alertImage;
+        [SerializeField]
+        private HorizontalLayoutGroup alertTagsContainer;
         [SerializeField]
         private GameObject alertImageObj;
         [SerializeField]
@@ -17,12 +23,23 @@ namespace HeavenDoors
         private Text senderText;
         [SerializeField]
         private Text messageText;
+        [SerializeField]
+        private GameObject tagPrefab;
+        [SerializeField]
+        private Color positiveColor;
+        [SerializeField]
+        private Color youColor;
 
-        public void InitializeMessage(string senderName, string message)
+        public void InitializeMessage(string senderName, string message, bool isYou)
         {
             senderText.text = senderName;
             messageText.text = message;
+            if (isYou)
+            {
+                senderText.color = youColor;
+            }
             DeactivateAlert();
+            ClearTags();
             UpdateCanvas();
         }
         private void UpdateCanvas()
@@ -30,19 +47,49 @@ namespace HeavenDoors
             Canvas.ForceUpdateCanvases();
             alertAndMessageGroup.enabled = false;
             alertAndMessageGroup.enabled = true;
+            alertContainer.enabled = false;
+            alertContainer.enabled = true;
+            alertTagsContainer.enabled = false;
+            alertTagsContainer.enabled = true;
         }
-        public void ActivateAlert(string message)
+        public void ActivateAlert(string message, List<string> tags)
         {
-            alertMessage.SetActive(true);
+            alertContainer.gameObject.SetActive(true);
             alertImageObj.SetActive(true);
-            Text alertMessageText = alertMessage.transform.Find("Text").GetComponent<Text>();
-            alertMessageText.text = message;
+            alertText.text = message;
+            if (tags.Count == 0)
+            {
+                alertTagsContainer.gameObject.SetActive(false);
+            }
+            foreach (string tag in tags)
+            {
+                GameObject tagObj = Instantiate(tagPrefab);
+                tagObj.transform.SetParent(alertTagsContainer.transform, false);
+                TagManager tagManager = tagObj.GetComponent<TagManager>();
+                tagManager.SetTagText(tag);
+            }
             UpdateCanvas();
+        }
+        public void ActivatePositiveAlert(string message)
+        {
+            alertContainer.gameObject.SetActive(true);
+            alertImageObj.SetActive(false);
+            alertText.text = message;
+            alertImage.color = positiveColor;
+            UpdateCanvas();
+        }
+
+        public void ClearTags()
+        {
+            foreach (Transform tag in alertTagsContainer.transform)
+            {
+                GameObject.Destroy(tag.gameObject);
+            }
         }
 
         public void DeactivateAlert()
         {
-            alertMessage.SetActive(false);
+            alertContainer.gameObject.SetActive(false);
             alertImageObj.SetActive(false);
             UpdateCanvas();
         }

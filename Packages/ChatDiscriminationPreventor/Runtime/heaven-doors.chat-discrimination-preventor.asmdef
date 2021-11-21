@@ -15,7 +15,8 @@
         "Microsoft.Bcl.AsyncInterfaces.dll",
         "System.Buffers.dll",
         "System.Memory.dll",
-        "System.Threading.Tasks.Extensions.dll"
+        "System.Threading.Tasks.Extensions.dll",
+        "Newtonsoft.Json.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

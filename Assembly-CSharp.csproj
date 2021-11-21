@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets/Draw If Atrribute/FieldNotFoundException.cs" />
+     <Compile Include="Assets/Scripts/TaskExtensions.cs" />
      <Compile Include="Assets/Draw If Atrribute/ReflectionUtil.cs" />
      <Compile Include="Assets/Draw If Atrribute/PropertyNotFoundException.cs" />
      <Compile Include="Assets/Draw If Atrribute/NumericTypeExpectedException.cs" />
@@ -49,6 +50,7 @@
      <Compile Include="Assets/Draw If Atrribute/ComparisonType.cs" />
      <Compile Include="Assets/Draw If Atrribute/TypeUtilities.cs" />
      <Compile Include="Assets/Scripts/ChatMessageManager.cs" />
+     <Compile Include="Assets/Scripts/TagManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -271,8 +273,35 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.22f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="System.Buffers">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Json">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Net.Http.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="ProfanityFilter">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/ProfanityFilter.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
         <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+        <HintPath>/Users/eke/Projects/Unity/Heaven Doors/Packages/ChatDiscriminationPreventor/Runtime/Plugins/System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
         <HintPath>/Applications/Unity/Hub/Editor/2020.3.22f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
