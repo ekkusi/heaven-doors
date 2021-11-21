@@ -35,7 +35,9 @@ namespace ChatDescrimintionPreventorProj
                 (float)json["evaluation_results"]["insult"] > detectionThreshold,
                 (float)json["evaluation_results"]["threat"] > detectionThreshold,
                 (float)json["evaluation_results"]["sexual_explicit"] > detectionThreshold,
-                (string)json["adviceMessage"]
+                (string)json["adviceMessage"],
+                (float)json["evaluation_results"]["positive_sentiment"],
+                (string)json["positive_message"]
             );
         }
 
@@ -81,11 +83,17 @@ namespace ChatDescrimintionPreventorProj
             bool isInsult,
             bool isThreat,
             bool isSexualExplicit,
-            string adviceMessage)
+            string adviceMessage,
+            float positivityRate,
+            string positiveMessage)
         {
             types = new List<string>();
             this.message = message;
             this.isToxic = isToxic;
+            this.positivityRate = positivityRate;
+            this.adviceMessage = adviceMessage;
+            this.positiveMessage = positiveMessage;
+
             if (isToxic) types.Add("Toxic");
             this.isServerelyToxic = isServerelyToxic;
             if (isServerelyToxic) types.Add("Severely toxic");
@@ -99,7 +107,9 @@ namespace ChatDescrimintionPreventorProj
             if (isThreat) types.Add("Threat");
             this.isSexualExplicit = isSexualExplicit;
             if (isSexualExplicit) types.Add("Sexual explicit");
-            this.adviceMessage = adviceMessage;
+
+            if (positivityRate > 90 && types.Count == 0) isPositive = true;
+            else isPositive = false;
         }
     }
 
