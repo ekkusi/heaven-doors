@@ -2,6 +2,6 @@
 
 ## Builds
 
-Download Demo app under Builds:
+Download Demo app to test on your machine under Builds:
 
-[/Builds](Builds)
+[/Builds/MacBuild.zip](MacOS Build)
